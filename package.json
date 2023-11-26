@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "lint": "eslint 'src/**/*.+(ts|js)' --ext .ts --ext .js --ignore-pattern '!src/**/*.*'"
+    "lint": "eslint 'src/**/*.+(ts|js)' --ext .ts --ext .js --ignore-pattern '!src/**/*.*'",
+    "lint:fix": "eslint 'src/**/*.+(ts|js)' --ext .ts --ext .js --ignore-pattern '!src/**/*.*' --fix"
   },
   "private": true,
   "dependencies": {
