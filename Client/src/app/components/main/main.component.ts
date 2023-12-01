@@ -1,17 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { WhisperCppService } from '../../services/whisper-cpp/whisper-cpp.service';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-main',
+  selector: "app-main",
   standalone: true,
   imports: [],
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.css'
+  templateUrl: "./main.component.html",
+  styleUrl: "./main.component.css",
 })
-export class MainComponent implements OnInit {
-  constructor(private whisperService: WhisperCppService) {}
-
-  async ngOnInit(): Promise<void> {
-    await this.whisperService.transcribe();  
-  }
+export class MainComponent {
+  constructor() {}
 }
