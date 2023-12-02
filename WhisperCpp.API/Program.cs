@@ -2,6 +2,15 @@ using WhisperCpp.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var clientOriginUrl = builder.Configuration["ClientOriginUrl"];
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "defaultPolicy", policy =>
+    {
+        policy.WithOrigins(clientOriginUrl).AllowAnyHeader().AllowAnyMethod();
+    });
+});
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -16,6 +25,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("defaultPolicy");
 
 app.UseAuthorization();
 
