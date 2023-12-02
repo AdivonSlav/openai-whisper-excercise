@@ -47,8 +47,8 @@ public class WhisperService : IWhisperService
         {
             transcription.Segments.Add(new TranscriptionSegmentDto()
             {
-                Start = result.Start,
-                End = result.End,
+                Start = result.Start.ToString(),
+                End = result.End.ToString(),
                 Text = result.Text
             });
         }
