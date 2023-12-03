@@ -1,0 +1,13 @@
+services:
+    client:
+        container_name: openai-whisper-client
+        image: openai-whisper-client:latest
+        ports:
+            - 4000:4000
+        build: ./Client
+    whisper-cpp-api:
+        container_name: whisper-cpp-api
+        image: whisper-cpp-api:latest
+        ports:
+            - 5000:80
+        build: ./WhisperCpp.API
