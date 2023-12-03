@@ -13,7 +13,7 @@ export class MainComponent {
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   @ViewChild('chatArea') chatArea!: ElementRef<HTMLTextAreaElement>;
-  @ViewChild('#sendMessage') sendMessage!: ElementRef<HTMLInputElement>; //Za slanje requesta prema AI
+  @ViewChild('sendMessage') sendMessage!: ElementRef<HTMLInputElement>; //Za slanje requesta prema AI
 
   public audioTabButtonText: string = 'Audio \n Transcription';
   public imageTabGeneratorButtonText: string = 'Image Generator';
