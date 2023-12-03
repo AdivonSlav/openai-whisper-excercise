@@ -5,6 +5,11 @@
   min-height: 100vh;
 }
 
+header,
+footer {
+  background-color: var(--HEADER-FOOTER-BACKGROUND-COLOR);
+}
+
 main {
   flex-grow: 1;
 }
