@@ -1,8 +1,11 @@
 using WhisperCpp.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddEnvironmentVariables(prefix: "WHISPER_API_");
 
 var clientOriginUrl = builder.Configuration["ClientOriginUrl"];
+var httpRedirect = builder.Configuration["HttpsRedirect"];
+var swaggerEnabled = builder.Configuration["Swagger:Enabled"];
 
 builder.Services.AddCors(options =>
 {
@@ -17,14 +20,31 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IWhisperService, WhisperService>();
 
 var app = builder.Build();
+var logger = app.Services.GetService<ILogger<Program>>();
 
-if (app.Environment.IsDevelopment())
+if (logger == null)
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    return 1;
 }
 
-app.UseHttpsRedirection();
+if (bool.TryParse(swaggerEnabled, out var shouldEnableSwagger))
+{
+    if (shouldEnableSwagger)
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+        logger.LogInformation("Enabling Swagger");
+    }
+}
+
+if (bool.TryParse(httpRedirect, out var shouldRedirect))
+{
+    if (shouldRedirect)
+    {
+        app.UseHttpsRedirection();
+        logger.LogInformation("Enabling HTTPS redirection");
+    }
+}
 
 app.UseCors("defaultPolicy");
 
@@ -33,3 +53,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+return 0;

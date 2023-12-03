@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test": {
+    "openai-whisper-client": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/test",
+            "outputPath": "dist/openai-whisper-client",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test:build:production"
+              "buildTarget": "openai-whisper-client:build:production"
             },
             "development": {
-              "buildTarget": "test:build:development"
+              "buildTarget": "openai-whisper-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,15 +79,15 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "test:build"
+            "buildTarget": "openai-whisper-client:build"
           }
         },
-        "test": {
+        "openai-whisper-client": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/openai-whisper-clienting"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
