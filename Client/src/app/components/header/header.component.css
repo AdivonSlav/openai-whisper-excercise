@@ -1,0 +1,10 @@
+figure {
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+figure img {
+  width: 60%;
+  height: auto;
+  filter: invert(100%);
+  margin: auto;
+}
