@@ -1,0 +1,22 @@
+button {
+  background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
+  color: var(--BACKGROUND-COLOR);
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-radius: 1rem 0 1rem 0;
+  transition: 0.3s;
+  cursor: pointer;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #80ced7ce;
+  transition: 0.3s;
+}
+
+.tabbed {
+  background-color: #80ced7ce;
+}

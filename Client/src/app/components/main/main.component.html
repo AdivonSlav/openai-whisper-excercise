@@ -1,1 +1,95 @@
-<p>main works!</p>
+<div id="main-container">
+  <div class="tabs">
+    <app-button
+      [buttonText]="audioTabButtonText"
+      id="transcription-tab-btn"
+      (buttonClick)="audioButtonClicked($event)"
+      [isTabbed]="audioButtonTabbed"
+    ></app-button>
+    <app-button
+      [buttonText]="imageTabGeneratorButtonText"
+      id="generator-tab-btn"
+      (buttonClick)="imageGeneratorClicked($event)"
+      [isTabbed]="imageGeneratorButtonTabbed"
+    ></app-button>
+  </div>
+
+  <section
+    id="aboutWebPage"
+    [hidden]="audioButtonTabbed || imageGeneratorButtonTabbed"
+  >
+    <h2>{{ aboutOurPageText }}</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ut,
+      placeat harum aliquid accusantium unde quis quia enim ratione quaerat
+      minus sequi repudiandae fugiat porro praesentium inventore nisi, tempore
+      illum!
+    </p>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+      veritatis fuga labore nisi pariatur aut laudantium adipisci voluptas
+      consequuntur, repellendus sed officia provident similique distinctio
+      asperiores molestiae iure saepe atque.
+    </p>
+  </section>
+
+  <section
+    id="audio-transcription"
+    [hidden]="imageGeneratorButtonTabbed || !audioButtonTabbed"
+  >
+    <h2>{{ audioTabButtonText }}</h2>
+    <figure>
+      <input
+        type="file"
+        id="inputForAudioUpload"
+        #fileInput
+        (change)="onFileUploaded()"
+      />
+      <img
+        src="assets/images/uploadButtonPicture.png"
+        alt="Upload Button PNG"
+        width="512"
+        height="512"
+        loading="lazy"
+        (click)="onUploadClicked()"
+      />
+      <figcaption (click)="onUploadClicked()">
+        {{ uploadedFileName == "" ? "No file selected" : uploadedFileName }}
+      </figcaption>
+    </figure>
+    <app-button
+      id="transcription-btn"
+      [buttonText]="audioButtonText"
+    ></app-button>
+  </section>
+  <section
+    id="image-generator"
+    [hidden]="audioButtonTabbed || !imageGeneratorButtonTabbed"
+  >
+    <h2>{{ imageTabGeneratorButtonText }}</h2>
+    <div class="textAreaContainer">
+      <textarea
+        name=""
+        id="inputMessage"
+        rows="1"
+        #chatArea
+        (input)="autoResize()"
+        placeholder="Type with AI"
+      ></textarea>
+      <input type="submit" hidden #sendMessage />
+      <figure class="send-picture-container">
+        <img
+          src="assets/images/sendMessagePicture.png"
+          alt="Send PNG"
+          width="512"
+          height="512"
+        />
+      </figure>
+    </div>
+    <div class="chatContainer">
+      <div class="aiMessages">
+        <p>GENERISANA SLIKA OD AI</p>
+      </div>
+    </div>
+  </section>
+</div>
