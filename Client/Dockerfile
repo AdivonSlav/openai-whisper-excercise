@@ -1,14 +1,17 @@
 # Use Node LTS on Alpine Linux
-FROM node:lts-alpine
-EXPOSE 4000
+FROM node:lts-alpine as build
 WORKDIR /app
-COPY package.json /app
+COPY package*.json .
 RUN npm install
 RUN npm install -g @angular/cli
-COPY . /app
+COPY . .
 RUN ng build --configuration=production
-COPY dist/openai-whisper-client /app/
-RUN ls -la
+
+FROM node:lts-alpine AS base
+EXPOSE 4000
+WORKDIR /app
+COPY --from=build /app/dist/openai-whisper-client .
 CMD [ "sh", "-c", "node server/server.mjs" ]
+
 
 
