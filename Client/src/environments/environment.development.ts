@@ -1,3 +1,4 @@
 export const environment = {
-  whisperCppApiUrl: 'https://localhost:5443',
+  whisperCppApiUrl:
+    process.env['WHISPER_CPP_API_URL'] || 'https://localhost:5443',
 };
