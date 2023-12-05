@@ -112,8 +112,8 @@
   }
 
   #transcription-copy-btn:hover {
-    opacity: 1.0;
-    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR-HOVERED);
+    opacity: 0.6;
+    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
     transition: 0.3s;
   }
 
