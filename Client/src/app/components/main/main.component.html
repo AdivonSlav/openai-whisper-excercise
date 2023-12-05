@@ -46,7 +46,7 @@
         (change)="onFileUploaded()"
       />
       <img
-        src="assets/images/uploadButtonPicture.png"
+        src="assets/images/upload-button-icon.png"
         alt="Upload Button PNG"
         width="512"
         height="512"
@@ -54,20 +54,27 @@
         (click)="onUploadClicked()"
       />
       <figcaption (click)="onUploadClicked()">
-        {{ uploadedFileName == "" ? "No file selected" : uploadedFileName }}
+        {{ getFileName() }}
       </figcaption>
     </figure>
-    <app-button
-      id="transcription-btn"
-      [buttonText]="audioButtonText"
-    ></app-button>
+    <button id="transcribe-btn" (click)="onTranscribeClicked()">
+      {{ transcribeButtonText }}
+    </button>
+
+    <div class="textarea-container">
+      <textarea readonly name="transcription-textarea" id="transcription-textarea" rows="20" [value]="this.transcribedText"></textarea>
+      <button id="transcription-copy-btn" (click)="onCopyClick()">
+        <img src="assets/images/copy-material-icon.png" alt="copy icon" *ngIf="!this.transcriptionCopied">
+        <img src="assets/images/done-material-icon.png" alt="copied icon" *ngIf="this.transcriptionCopied">
+      </button>
+    </div>
   </section>
   <section
     id="image-generator"
     [hidden]="audioButtonTabbed || !imageGeneratorButtonTabbed"
   >
     <h2>{{ imageTabGeneratorButtonText }}</h2>
-    <div class="textAreaContainer">
+    <div class="textarea-container">
       <textarea
         name=""
         id="inputMessage"
@@ -79,7 +86,7 @@
       <input type="submit" hidden #sendMessage />
       <figure class="send-picture-container">
         <img
-          src="assets/images/sendMessagePicture.png"
+          src="assets/images/send-message-icon.png"
           alt="Send PNG"
           width="512"
           height="512"

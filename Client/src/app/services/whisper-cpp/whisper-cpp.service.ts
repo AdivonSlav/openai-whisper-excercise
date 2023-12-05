@@ -35,4 +35,14 @@ export class WhisperCppService {
 
     return formData;
   }
+
+  parseTranscriptionModel(model: TranscriptionModel): string {
+    let parsedText = '';
+
+    model.segments.forEach((segment) => {
+      parsedText += `${segment.start} -> ${segment.end}: ${segment.text}\n\n`;
+    });
+
+    return parsedText;
+  }
 }
