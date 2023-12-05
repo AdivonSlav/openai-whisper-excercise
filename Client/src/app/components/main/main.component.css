@@ -105,7 +105,6 @@
     padding: 0.5rem;
     background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
     opacity: 0.1;
-    color: var(--BACKGROUND-COLOR);
     border: none;
     transition: 0.3s;
     cursor: pointer;
