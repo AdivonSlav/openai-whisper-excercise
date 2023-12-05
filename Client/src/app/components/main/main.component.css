@@ -60,12 +60,13 @@
     margin: auto;
   }
 
-  .textAreaContainer {
+  .textarea-container {
     overflow-y: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0.5rem;
+    position: relative;
   }
 
   #inputMessage,
@@ -83,6 +84,38 @@
 
   #inputMessage:focus {
     outline: 2px solid var(--COLOR);
+  }
+
+  #transcription-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    height: fit-content;
+    font-size: 14px;
+    resize: none;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--HEADER-FOOTER-BACKGROUND-COLOR);
+    color: var(--COLOR);
+  }
+
+  #transcription-copy-btn {
+    position: absolute;
+    top: 85%;
+    right: 15px;
+    padding: 0.5rem;
+    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
+    opacity: 0.1;
+    color: var(--BACKGROUND-COLOR);
+    border: none;
+    transition: 0.3s;
+    cursor: pointer;
+    border-radius: 0.5rem;
+  }
+
+  #transcription-copy-btn:hover {
+    opacity: 1.0;
+    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR-HOVERED);
+    transition: 0.3s;
   }
 
   .send-picture-container {
@@ -111,6 +144,25 @@
   .aiMessages p {
     width: 100%;
     height: fit-content;
+  }
+
+  #transcribe-btn {
+    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
+    color: var(--BACKGROUND-COLOR);
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    font-weight: bold;
+    border-radius: 1rem 0 1rem 0;
+    transition: 0.3s;
+    cursor: pointer;
+    word-wrap: break-word;
+    width: 100%;
+  }
+  
+  #transcribe-btn:hover {
+    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR-HOVERED);
+    transition: 0.3s;
   }
 }
 
