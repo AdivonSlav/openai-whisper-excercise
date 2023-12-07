@@ -50,7 +50,6 @@
         alt="Upload Button PNG"
         width="512"
         height="512"
-        loading="lazy"
         (click)="onUploadClicked()"
       />
       <figcaption (click)="onUploadClicked()">
@@ -62,10 +61,28 @@
     </button>
 
     <div class="textarea-container">
-      <textarea readonly name="transcription-textarea" id="transcription-textarea" rows="20" [value]="this.transcribedText"></textarea>
+      <textarea
+        readonly
+        name="transcription-textarea"
+        id="transcription-textarea"
+        rows="17"
+        [value]="this.transcribedText"
+      ></textarea>
       <button id="transcription-copy-btn" (click)="onCopyClick()">
-        <img src="assets/images/copy-material-icon.png" alt="copy icon" *ngIf="!this.transcriptionCopied">
-        <img src="assets/images/done-material-icon.png" alt="copied icon" *ngIf="this.transcriptionCopied">
+        <img
+          src="assets/images/copy-material-icon.png"
+          alt="copy icon"
+          *ngIf="!this.transcriptionCopied"
+          width="24"
+          height="24"
+        />
+        <img
+          src="assets/images/done-material-icon.png"
+          alt="copied icon"
+          *ngIf="this.transcriptionCopied"
+          width="24"
+          height="24"
+        />
       </button>
     </div>
   </section>
@@ -95,7 +112,9 @@
     </div>
     <div class="chatContainer">
       <div class="aiMessages">
-        <p>GENERISANA SLIKA OD AI</p>
+        <figure>
+          <img src="" alt="Generated AI Pic" width="1024" height="1024" />
+        </figure>
       </div>
     </div>
   </section>
