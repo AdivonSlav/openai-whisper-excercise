@@ -1,120 +1,191 @@
-@media only screen and (min-width: 320px) and (max-width: 479px) {
+#main-container {
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#transcription-tab-btn,
+#generator-tab-btn {
+  width: 45%;
+}
+
+#aboutWebPage p {
+  text-align: justify;
+  line-height: 1.5rem;
+}
+
+#aboutWebPage,
+#audio-transcription,
+#image-generator {
+  margin-top: 1rem;
+}
+
+#audio-transcription figure {
+  border: 1px solid var(--COLOR);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 1rem 0 1rem 0;
+  margin: 1rem 0 0.5rem 0;
+}
+
+#inputForAudioUpload {
+  display: none;
+}
+
+#transcription-btn {
+  float: right;
+}
+
+#audio-transcription figure img,
+#audio-transcription figure figcaption {
+  cursor: pointer;
+}
+
+#audio-transcription figure img {
+  width: 20%;
+  height: auto;
+  margin: auto;
+}
+
+#audio-transcription figure figcaption {
+  width: fit-content;
+  margin: auto;
+}
+
+.textarea-container {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+  position: relative;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.textarea-container textarea {
+  outline: 1px solid var(--COLOR);
+}
+
+.textarea-container textarea:focus {
+  border: none;
+}
+
+#transcribe-btn {
+  background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
+  color: var(--BACKGROUND-COLOR);
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-radius: 1rem 0 1rem 0;
+  transition: 0.3s;
+  cursor: pointer;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+#transcribe-btn:hover {
+  background-color: var(--TAB-BUTTON-BACKGROUND-COLOR-HOVERED);
+  transition: 0.3s;
+}
+
+#transcription-copy-btn {
+  position: absolute;
+  top: 85%;
+  right: 15px;
+  padding: 0.5rem;
+  background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
+  opacity: 0.1;
+  border: none;
+  transition: 0.3s;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+#transcription-copy-btn:hover {
+  opacity: 0.6;
+  background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
+  transition: 0.3s;
+}
+
+#inputMessage,
+.aiMessages figure {
+  width: 85%;
+  height: fit-content;
+  padding: 0.5rem;
+  font-size: 14px;
+  resize: none;
+  border: none;
+  border-radius: 1rem;
+  background-color: var(--HEADER-FOOTER-BACKGROUND-COLOR);
+  color: var(--COLOR);
+}
+
+#inputMessage:focus {
+  outline: 2px solid var(--COLOR);
+}
+
+#transcription-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  height: fit-content;
+  font-size: 14px;
+  resize: none;
+  border: none;
+  border-radius: 1rem;
+  background-color: var(--HEADER-FOOTER-BACKGROUND-COLOR);
+  color: var(--COLOR);
+}
+
+.send-picture-container {
+  width: 10%;
+}
+
+.send-picture-container img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 0.5px solid var(--COLOR);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 1rem 0 1rem 0;
+  max-height: 50vh;
+}
+
+.aiMessages,
+.aiMessages figure {
+  width: 100%;
+  height: fit-content;
+  overflow-y: auto;
+}
+
+.aiMessages figure img {
+  width: 50%;
+  height: auto;
+  margin: auto;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
   #main-container {
-    width: 90%;
-    margin: auto;
-    margin-top: 1rem;
-  }
-
-  .tabs {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  #transcription-tab-btn,
-  #generator-tab-btn {
-    width: 45%;
-  }
-
-  #aboutWebPage p {
-    text-align: justify;
-    line-height: 1.5rem;
-  }
-
-  #aboutWebPage,
-  #audio-transcription,
-  #image-generator {
-    margin-top: 1rem;
-  }
-
-  #audio-transcription figure {
-    border: 1px solid var(--COLOR);
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 1rem 0 1rem 0;
-    margin: 1rem 0 0.5rem 0;
-  }
-
-  #inputForAudioUpload {
-    display: none;
-  }
-
-  #transcription-btn {
-    float: right;
-  }
-
-  #audio-transcription figure img,
-  #audio-transcription figure figcaption {
-    cursor: pointer;
+    width: 80%;
   }
 
   #audio-transcription figure img {
-    width: 25%;
-    height: auto;
-    margin: auto;
-  }
-
-  #audio-transcription figure figcaption {
-    width: fit-content;
-    margin: auto;
-  }
-
-  .textarea-container {
-    overflow-y: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.5rem;
-    position: relative;
-  }
-
-  #inputMessage,
-  .aiMessages p {
-    width: 85%;
-    height: fit-content;
-    padding: 0.5rem;
-    font-size: 14px;
-    resize: none;
-    border: none;
-    border-radius: 1rem;
-    background-color: var(--HEADER-FOOTER-BACKGROUND-COLOR);
-    color: var(--COLOR);
-  }
-
-  #inputMessage:focus {
-    outline: 2px solid var(--COLOR);
-  }
-
-  #transcription-textarea {
-    width: 100%;
-    padding: 0.5rem;
-    height: fit-content;
-    font-size: 14px;
-    resize: none;
-    border: none;
-    border-radius: 1rem;
-    background-color: var(--HEADER-FOOTER-BACKGROUND-COLOR);
-    color: var(--COLOR);
-  }
-
-  #transcription-copy-btn {
-    position: absolute;
-    top: 85%;
-    right: 15px;
-    padding: 0.5rem;
-    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
-    opacity: 0.1;
-    border: none;
-    transition: 0.3s;
-    cursor: pointer;
-    border-radius: 0.5rem;
-  }
-
-  #transcription-copy-btn:hover {
-    opacity: 0.6;
-    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
-    transition: 0.3s;
+    width: 15%;
   }
 
   .send-picture-container {
@@ -122,52 +193,52 @@
   }
 
   .send-picture-container img {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
+    width: 80%;
   }
 
-  .chatContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 0.5px solid var(--COLOR);
-    border-radius: 1rem;
-    padding: 0.5rem;
-    margin: 1rem 0 1rem 0;
-    max-height: 90vh;
-    overflow-y: auto;
+  .aiMessages figure img {
+    width: 50%;
   }
-
-  .aiMessages,
-  .aiMessages p {
-    width: 100%;
-    height: fit-content;
-  }
-
-  #transcribe-btn {
-    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR);
-    color: var(--BACKGROUND-COLOR);
-    border: none;
-    font-size: 1rem;
-    padding: 0.5rem;
-    font-weight: bold;
-    border-radius: 1rem 0 1rem 0;
-    transition: 0.3s;
-    cursor: pointer;
-    word-wrap: break-word;
-    width: 100%;
-  }
-  
-  #transcribe-btn:hover {
-    background-color: var(--TAB-BUTTON-BACKGROUND-COLOR-HOVERED);
-    transition: 0.3s;
-  }
-}
-
-@media only screen and (min-width: 480px) and (max-width: 767px) {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  #main-container {
+    width: 80%;
+  }
+
+  #audio-transcription figure img {
+    width: 10%;
+  }
+
+  .send-picture-container {
+    width: 10%;
+  }
+
+  .send-picture-container img {
+    width: 60%;
+  }
+
+  .aiMessages figure img {
+    width: 40%;
+  }
 }
 @media only screen and (min-width: 920px) {
+  #main-container {
+    width: 60%;
+  }
+
+  #audio-transcription figure img {
+    width: 10%;
+  }
+
+  .send-picture-container {
+    width: 10%;
+  }
+
+  .send-picture-container img {
+    width: 40px;
+  }
+
+  .aiMessages figure img {
+    width: 30%;
+  }
 }
