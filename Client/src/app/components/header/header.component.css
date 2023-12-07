@@ -3,8 +3,24 @@ figure {
 }
 
 figure img {
-  width: 60%;
+  width: 50%;
   height: auto;
   filter: invert(100%);
   margin: auto;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  figure img {
+    width: 30%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  figure img {
+    width: 30%;
+  }
+}
+@media only screen and (min-width: 920px) {
+  figure img {
+    width: 15%;
+  }
 }
