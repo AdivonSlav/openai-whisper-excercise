@@ -2,36 +2,47 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TabbedButtonComponent } from './tabbed-button/tabbed-button.component';
 import { WhisperCppService } from '../../services/whisper-cpp/whisper-cpp.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ImageGeneratorService } from '../../services/open-ai-api/image-generator.service';
+import { OpenAIPostModel } from '../../models/open-ai-post.model';
+import { OpenAIReturnModel } from '../../models/open-ai-return.model';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [TabbedButtonComponent, CommonModule],
+  imports: [TabbedButtonComponent, CommonModule, FormsModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css',
 })
 export class MainComponent {
-  constructor(private whisperService: WhisperCppService) {}
+  constructor(
+    private whisperService: WhisperCppService,
+    public imageGeneratorService: ImageGeneratorService,
+  ) {}
 
   @ViewChild('fileInput')
   fileInput!: ElementRef<HTMLInputElement>;
   @ViewChild('chatArea')
   chatArea!: ElementRef<HTMLTextAreaElement>;
-  @ViewChild('sendMessage')
-  sendMessage!: ElementRef<HTMLInputElement>; //Za slanje requesta prema AI
 
   public audioTabButtonText: string = 'Audio \n Transcription';
   public imageTabGeneratorButtonText: string = 'Image Generator';
   public aboutOurPageText: string = 'About Our Page';
   public transcribeButtonText: string = 'Transcribe';
-
-  public uploadedFile?: File | null;
-  public transcriptionFinished: boolean = false;
   public transcribedText: string = '';
-  public transcriptionCopied: boolean = false;
+  public imageIsGeneratingText: string = 'Generating image, please wait.';
 
+  public transcriptionFinished: boolean = false;
+  public transcriptionCopied: boolean = false;
   public audioButtonTabbed: boolean = false;
   public imageGeneratorButtonTabbed: boolean = false;
+  public imageIsGenerating: boolean = false;
+  public imageIsGenerated: boolean = false;
+
+  public uploadedFile?: File | null;
+
+  public imageGenerationPostData: OpenAIPostModel = new OpenAIPostModel();
+  public imageGenerationGetData: OpenAIReturnModel = new OpenAIReturnModel();
 
   getFileName(): string {
     if (this.uploadedFile == null || this.uploadedFile.name == '') {
@@ -93,5 +104,27 @@ export class MainComponent {
   onCopyClick(): void {
     navigator.clipboard.writeText(this.transcribedText);
     this.transcriptionCopied = true;
+  }
+
+  generateImage() {
+    this.imageIsGenerating = true;
+    this.imageIsGenerated = false;
+    if (this.imageGenerationPostData.prompt != '') {
+      this.imageGeneratorService
+        .generateImage(this.imageGenerationPostData)
+        .subscribe({
+          next: (data: OpenAIReturnModel) => {
+            this.imageGenerationGetData = data;
+          },
+          error: (err) => {
+            console.error(err);
+            this.imageIsGeneratingText = err.error.error.message;
+          },
+          complete: () => {
+            this.imageIsGenerating = false;
+            this.imageIsGenerated = true;
+          },
+        });
+    }
   }
 }

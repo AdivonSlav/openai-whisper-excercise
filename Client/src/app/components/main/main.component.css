@@ -159,11 +159,16 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: fit-content;
   border: 0.5px solid var(--COLOR);
   border-radius: 1rem;
   padding: 0.5rem;
   margin: 1rem 0 1rem 0;
-  max-height: 50vh;
+}
+
+.aiMessages p {
+  width: fit-content;
+  margin: auto auto;
 }
 
 .aiMessages,
@@ -174,7 +179,7 @@
 }
 
 .aiMessages figure img {
-  width: 50%;
+  width: 70%;
   height: auto;
   margin: auto;
 }
