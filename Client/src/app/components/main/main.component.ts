@@ -107,9 +107,9 @@ export class MainComponent {
   }
 
   generateImage() {
-    this.imageIsGenerating = true;
-    this.imageIsGenerated = false;
     if (this.imageGenerationPostData.prompt != '') {
+      this.imageIsGenerating = true;
+      this.imageIsGenerated = false;
       this.imageGeneratorService
         .generateImage(this.imageGenerationPostData)
         .subscribe({
