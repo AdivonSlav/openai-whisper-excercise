@@ -99,21 +99,30 @@
         #chatArea
         (input)="autoResize()"
         placeholder="Type with AI"
+        [(ngModel)]="this.imageGenerationPostData.prompt"
       ></textarea>
-      <input type="submit" hidden #sendMessage />
       <figure class="send-picture-container">
         <img
           src="assets/images/send-message-icon.png"
           alt="Send PNG"
           width="512"
           height="512"
+          (click)="this.generateImage()"
         />
       </figure>
     </div>
     <div class="chatContainer">
       <div class="aiMessages">
-        <figure>
-          <img src="" alt="Generated AI Pic" width="1024" height="1024" />
+        <p [hidden]="!this.imageIsGenerating">
+          {{ this.imageIsGeneratingText }}
+        </p>
+        <figure [hidden]="!this.imageIsGenerated">
+          <img
+            [src]="this.imageGenerationGetData.data.at(0)?.url"
+            alt="Generated AI Pic"
+            width="1024"
+            height="1024"
+          />
         </figure>
       </div>
     </div>
